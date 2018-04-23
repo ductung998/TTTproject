@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="test" Class="KetnoiCSDLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=test;Integrated Security=True" SettingsObjectName="WindowsFormsApplication1.Properties.Settings" SettingsPropertyName="testConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.adr_baocao" Member="adr_baocaos">
+    <Type Name="adr_baocao">
+      <Column Name="idbaocao" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaygui" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="tinhtrang" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="adr_baocao_adr_hoanthienbc" Member="adr_hoanthienbcs" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_hoanthienbc" />
+      <Association Name="adr_baocao_adr_ketqua" Member="adr_ketqua" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_ketqua" Cardinality="One" />
+      <Association Name="adr_baocao_adr_mota" Member="adr_mota" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_mota" Cardinality="One" />
+      <Association Name="adr_baocao_adr_thuocnghingo" Member="adr_thuocnghingos" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_thuocnghingo" />
+      <Association Name="adr_baocao_adr_thuocsdchung" Member="adr_thuocsdchungs" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_thuocsdchung" />
+      <Association Name="benhan_adr_baocao" Member="benhan" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhan" IsForeignKey="true" />
+      <Association Name="nhansu_adr_baocao" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ykien_phieuksdb" Member="ykien_phieuksdbs">
+    <Type Name="ykien_phieuksdb">
+      <Column Name="idykienksdb" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idphieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaygio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ndykien" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Association Name="nhansu_ykien_phieuksdb" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+      <Association Name="phieuksdb_ykien_phieuksdb" Member="phieuksdb" ThisKey="idphieu" OtherKey="idphieu" Type="phieuksdb" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adr_hoanthienbc" Member="adr_hoanthienbcs">
+    <Type Name="adr_hoanthienbc">
+      <Column Name="idhoanthien" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idbaocao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="moilq" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="moilqkhac" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="thangthamdinh" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="thangkhac" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="binhluan" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="dangbaocao" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="adr_baocao_adr_hoanthienbc" Member="adr_baocao" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_baocao" IsForeignKey="true" />
+      <Association Name="nhansu_adr_hoanthienbc" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adr_ketqua" Member="adr_ketquas">
+    <Type Name="adr_ketqua">
+      <Column Name="idbaocao" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="kqthamdinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ngaytra" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="adr_baocao_adr_ketqua" Member="adr_baocao" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_baocao" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adr_mota" Member="adr_motas">
+    <Type Name="adr_mota">
+      <Column Name="idbaocao" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ngayxh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="thoigianxh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mota" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="xnlienquan" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="tiensu" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="xutri" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="mucdo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ketqua" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="adr_baocao_adr_mota" Member="adr_baocao" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_baocao" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adr_thuocnghingo" Member="adr_thuocnghingos">
+    <Type Name="adr_thuocnghingo">
+      <Column Name="idthuocnn" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idthuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idbaocao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="solo" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="lieusd" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="solansd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="donvilansd" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ngaybd" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ngaykt" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="lydosd" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="caithien" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="taisd" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="adr_thuocnghingo_adr_ttthem" Member="adr_ttthems" ThisKey="idthuocnn" OtherKey="idthuocnn" Type="adr_ttthem" />
+      <Association Name="adr_baocao_adr_thuocnghingo" Member="adr_baocao" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_baocao" IsForeignKey="true" />
+      <Association Name="thuoc_adr_thuocnghingo" Member="thuoc" ThisKey="idthuoc" OtherKey="idthuoc" Type="thuoc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adr_thuocsdchung" Member="adr_thuocsdchungs">
+    <Type Name="adr_thuocsdchung">
+      <Column Name="idsdchung" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idthuoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idbaocao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lieusd" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="solansd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="donvisolansd" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ngaybd" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ngaykt" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="adr_baocao_adr_thuocsdchung" Member="adr_baocao" ThisKey="idbaocao" OtherKey="idbaocao" Type="adr_baocao" IsForeignKey="true" />
+      <Association Name="thuoc_adr_thuocsdchung" Member="thuoc" ThisKey="idthuoc" OtherKey="idthuoc" Type="thuoc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adr_ttthem" Member="adr_ttthems">
+    <Type Name="adr_ttthem">
+      <Column Name="idttthem" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idthuocnn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cachpha" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="dmpha" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tocdotruyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="donvi" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="khac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Association Name="adr_thuocnghingo_adr_ttthem" Member="adr_thuocnghingo" ThisKey="idthuocnn" OtherKey="idthuocnn" Type="adr_thuocnghingo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bantin" Member="bantins">
+    <Type Name="bantin">
+      <Column Name="idbantin" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tukhoa" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tieude" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="hinhthuc" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="urltin" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="urltailieu" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="doituongnhan" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="tinhtrang" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="xem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="bantin_guibantin" Member="guibantins" ThisKey="idbantin" OtherKey="idbantin" Type="guibantin" />
+      <Association Name="bantin_phanhoi_bantin_doc" Member="phanhoi_bantin_docs" ThisKey="idbantin" OtherKey="idbantin" Type="phanhoi_bantin_doc" />
+      <Association Name="bantin_ykien_bantin_duyet" Member="ykien_bantin_duyets" ThisKey="idbantin" OtherKey="idbantin" Type="ykien_bantin_duyet" />
+      <Association Name="nhansu_bantin" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.benhan" Member="benhans">
+    <Type Name="benhan">
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenbn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gioitinh" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="cannang" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ngaynhapvien" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="lydonhapvien" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="chandoannhapvien" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="suygan" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="suythan" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="xuatvien" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="benhan_adr_baocao" Member="adr_baocaos" ThisKey="idbenhan" OtherKey="idbenhan" Type="adr_baocao" />
+      <Association Name="benhan_benhpham" Member="benhphams" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhpham" />
+      <Association Name="benhan_hoidap_dinhkem" Member="hoidap_dinhkems" ThisKey="idbenhan" OtherKey="idbenhan" Type="hoidap_dinhkem" />
+      <Association Name="benhan_kqxetnghiem" Member="kqxetnghiems" ThisKey="idbenhan" OtherKey="idbenhan" Type="kqxetnghiem" />
+      <Association Name="benhan_phieuksdb" Member="phieuksdbs" ThisKey="idbenhan" OtherKey="idbenhan" Type="phieuksdb" />
+      <Association Name="benhan_sinhhieu" Member="sinhhieus" ThisKey="idbenhan" OtherKey="idbenhan" Type="sinhhieu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.benhpham" Member="benhphams">
+    <Type Name="benhpham">
+      <Column Name="idbenhpham" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idtenbenhpham" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ngaygui" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ngaytra" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ketqua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="donvi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="benhpham_xetnghiemv" Member="xetnghiemvs" ThisKey="idbenhpham" OtherKey="idbenhpham" Type="xetnghiemv" />
+      <Association Name="benhan_benhpham" Member="benhan" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhan" IsForeignKey="true" />
+      <Association Name="tenbenhpham_benhpham" Member="tenbenhpham" ThisKey="idtenbenhpham" OtherKey="idtenbenhpham" Type="tenbenhpham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.guibantin" Member="guibantins">
+    <Type Name="guibantin">
+      <Column Name="idguibantin" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idbantin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="xem" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="bantin_guibantin" Member="bantin" ThisKey="idbantin" OtherKey="idbantin" Type="bantin" IsForeignKey="true" />
+      <Association Name="nhansu_guibantin" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hoatchat" Member="hoatchats">
+    <Type Name="hoatchat">
+      <Column Name="idhc" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idnhomdl" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="idhcgoc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="loaihc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="stt_tt40" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="hamluong" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Association Name="hoatchat_khangsinhdacbiet" Member="khangsinhdacbiets" ThisKey="idhc" OtherKey="idhc" Type="khangsinhdacbiet" />
+      <Association Name="hoatchat_khangsinhdo" Member="khangsinhdos" ThisKey="idhc" OtherKey="idhc" Type="khangsinhdo" />
+      <Association Name="hoatchat_thuoc" Member="thuocs" ThisKey="idhc" OtherKey="idhc" Type="thuoc" />
+      <Association Name="hoatchatgoc_hoatchat" Member="hoatchatgoc" ThisKey="idhcgoc" OtherKey="idhcgoc" Type="hoatchatgoc" IsForeignKey="true" />
+      <Association Name="nhomduocly_hoatchat" Member="nhomduocly" ThisKey="idnhomdl" OtherKey="idnhomdl" Type="nhomduocly" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hoatchatgoc" Member="hoatchatgocs">
+    <Type Name="hoatchatgoc">
+      <Column Name="idhcgoc" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="hoatchatgoc_hoatchat" Member="hoatchats" ThisKey="idhcgoc" OtherKey="idhcgoc" Type="hoatchat" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hoidap_cauhoi" Member="hoidap_cauhois">
+    <Type Name="hoidap_cauhoi">
+      <Column Name="idcauhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="chude" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="tieude" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="noidung" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="thoigian" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="traloi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="tinhtrang" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="hoidap_cauhoi_hoidap_dinhkem" Member="hoidap_dinhkems" ThisKey="idcauhoi" OtherKey="idcauhoi" Type="hoidap_dinhkem" />
+      <Association Name="hoidap_cauhoi_hoidap_traloi" Member="hoidap_tralois" ThisKey="idcauhoi" OtherKey="idcauhoi" Type="hoidap_traloi" />
+      <Association Name="nhansu_hoidap_cauhoi" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hoidap_dinhkem" Member="hoidap_dinhkems">
+    <Type Name="hoidap_dinhkem">
+      <Column Name="iddinhkem" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idcauhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tenfile" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Association Name="benhan_hoidap_dinhkem" Member="benhan" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhan" IsForeignKey="true" />
+      <Association Name="hoidap_cauhoi_hoidap_dinhkem" Member="hoidap_cauhoi" ThisKey="idcauhoi" OtherKey="idcauhoi" Type="hoidap_cauhoi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hoidap_traloi" Member="hoidap_tralois">
+    <Type Name="hoidap_traloi">
+      <Column Name="idreply" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idcauhoi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="noidung" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="thoigian" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="traloi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="hoidap_cauhoi_hoidap_traloi" Member="hoidap_cauhoi" ThisKey="idcauhoi" OtherKey="idcauhoi" Type="hoidap_cauhoi" IsForeignKey="true" />
+      <Association Name="nhansu_hoidap_traloi" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.khangsinhdacbiet" Member="khangsinhdacbiets">
+    <Type Name="khangsinhdacbiet">
+      <Column Name="idksdb" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idhc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="duongdung" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="khangsinhdacbiet_phieuksdb" Member="phieuksdbs" ThisKey="idksdb" OtherKey="idksdb" Type="phieuksdb" />
+      <Association Name="hoatchat_khangsinhdacbiet" Member="hoatchat" ThisKey="idhc" OtherKey="idhc" Type="hoatchat" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.khangsinhdo" Member="khangsinhdos">
+    <Type Name="khangsinhdo">
+      <Column Name="idksdo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idxnvs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idhc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ketqua" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="hoatchat_khangsinhdo" Member="hoatchat" ThisKey="idhc" OtherKey="idhc" Type="hoatchat" IsForeignKey="true" />
+      <Association Name="xetnghiemv_khangsinhdo" Member="xetnghiemv" ThisKey="idxnvs" OtherKey="idxnvs" Type="xetnghiemv" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.khoa" Member="khoas">
+    <Type Name="khoa">
+      <Column Name="idkhoa" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="khoa_nhansu" Member="nhansus" ThisKey="idkhoa" OtherKey="idkhoa" Type="nhansu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.kqxetnghiem" Member="kqxetnghiems">
+    <Type Name="kqxetnghiem">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idxn" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kq" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayxn" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="benhan_kqxetnghiem" Member="benhan" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhan" IsForeignKey="true" />
+      <Association Name="xetnghiem_kqxetnghiem" Member="xetnghiem" ThisKey="idxn" OtherKey="idxn" Type="xetnghiem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.nhansu" Member="nhansus">
+    <Type Name="nhansu">
+      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="manv" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="hoten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nghenghiep" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="chucvu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="idkhoa" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="idphongban" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="sdr" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="acc" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="pw" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="quyen" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="nhansu_adr_baocao" Member="adr_baocaos" ThisKey="iduser" OtherKey="iduser" Type="adr_baocao" />
+      <Association Name="nhansu_ykien_phieuksdb" Member="ykien_phieuksdbs" ThisKey="iduser" OtherKey="iduser" Type="ykien_phieuksdb" />
+      <Association Name="nhansu_adr_hoanthienbc" Member="adr_hoanthienbcs" ThisKey="iduser" OtherKey="iduser" Type="adr_hoanthienbc" />
+      <Association Name="nhansu_bantin" Member="bantins" ThisKey="iduser" OtherKey="iduser" Type="bantin" />
+      <Association Name="nhansu_guibantin" Member="guibantins" ThisKey="iduser" OtherKey="iduser" Type="guibantin" />
+      <Association Name="nhansu_hoidap_cauhoi" Member="hoidap_cauhois" ThisKey="iduser" OtherKey="iduser" Type="hoidap_cauhoi" />
+      <Association Name="nhansu_hoidap_traloi" Member="hoidap_tralois" ThisKey="iduser" OtherKey="iduser" Type="hoidap_traloi" />
+      <Association Name="nhansu_phanhoi_bantin_doc" Member="phanhoi_bantin_docs" ThisKey="iduser" OtherKey="iduser" Type="phanhoi_bantin_doc" />
+      <Association Name="nhansu_ykien_bantin_duyet" Member="ykien_bantin_duyets" ThisKey="iduser" OtherKey="iduser" Type="ykien_bantin_duyet" />
+      <Association Name="khoa_nhansu" Member="khoa" ThisKey="idkhoa" OtherKey="idkhoa" Type="khoa" IsForeignKey="true" />
+      <Association Name="phongban_nhansu" Member="phongban" ThisKey="idphongban" OtherKey="idphongban" Type="phongban" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.nhomduocly" Member="nhomduoclies">
+    <Type Name="nhomduocly">
+      <Column Name="idnhomdl" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="nhomduocly_hoatchat" Member="hoatchats" ThisKey="idnhomdl" OtherKey="idnhomdl" Type="hoatchat" />
+    </Type>
+  </Table>
+  <Table Name="dbo.phanhoi_bantin_doc" Member="phanhoi_bantin_docs">
+    <Type Name="phanhoi_bantin_doc">
+      <Column Name="idphanhoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idbantin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="noidung" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="ngaygio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="xoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="bantin_phanhoi_bantin_doc" Member="bantin" ThisKey="idbantin" OtherKey="idbantin" Type="bantin" IsForeignKey="true" />
+      <Association Name="nhansu_phanhoi_bantin_doc" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.phieuksdb" Member="phieuksdbs">
+    <Type Name="phieuksdb">
+      <Column Name="idphieu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chidinh" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="idksdb" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="lieusd" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="khoals" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="khoaduoc" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="bsdieutri" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="tinhtrang" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="phieuksdb_ykien_phieuksdb" Member="ykien_phieuksdbs" ThisKey="idphieu" OtherKey="idphieu" Type="ykien_phieuksdb" />
+      <Association Name="phieuksdb_thaydoi_phieuksdb" Member="thaydoi_phieuksdbs" ThisKey="idphieu" OtherKey="idphieu" Type="thaydoi_phieuksdb" />
+      <Association Name="benhan_phieuksdb" Member="benhan" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhan" IsForeignKey="true" />
+      <Association Name="khangsinhdacbiet_phieuksdb" Member="khangsinhdacbiet" ThisKey="idksdb" OtherKey="idksdb" Type="khangsinhdacbiet" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.phongban" Member="phongbans">
+    <Type Name="phongban">
+      <Column Name="idphongban" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="phongban_nhansu" Member="nhansus" ThisKey="idphongban" OtherKey="idphongban" Type="nhansu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sinhhieu" Member="sinhhieus">
+    <Type Name="sinhhieu">
+      <Column Name="idsinhhieu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idbenhan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaydo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="huyetap" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="mach" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="nhiptho" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="spo2" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="thannhiet" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="lamsang" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Association Name="benhan_sinhhieu" Member="benhan" ThisKey="idbenhan" OtherKey="idbenhan" Type="benhan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tenbenhpham" Member="tenbenhphams">
+    <Type Name="tenbenhpham">
+      <Column Name="idtenbenhpham" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenbp" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="tenbenhpham_benhpham" Member="benhphams" ThisKey="idtenbenhpham" OtherKey="idtenbenhpham" Type="benhpham" />
+    </Type>
+  </Table>
+  <Table Name="dbo.thaydoi_phieuksdb" Member="thaydoi_phieuksdbs">
+    <Type Name="thaydoi_phieuksdb">
+      <Column Name="idthaydoi" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idphieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="noidung" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="thoigian" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="phieuksdb_thaydoi_phieuksdb" Member="phieuksdb" ThisKey="idphieu" OtherKey="idphieu" Type="phieuksdb" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.thuoc" Member="thuocs">
+    <Type Name="thuoc">
+      <Column Name="idthuoc" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenthuoc" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="idhc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nhasx" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hamluong" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="dangbc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="duongdung" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="dungtich" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="thuoc_adr_thuocnghingo" Member="adr_thuocnghingos" ThisKey="idthuoc" OtherKey="idthuoc" Type="adr_thuocnghingo" />
+      <Association Name="thuoc_adr_thuocsdchung" Member="adr_thuocsdchungs" ThisKey="idthuoc" OtherKey="idthuoc" Type="adr_thuocsdchung" />
+      <Association Name="hoatchat_thuoc" Member="hoatchat" ThisKey="idhc" OtherKey="idhc" Type="hoatchat" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vikhuan" Member="vikhuans">
+    <Type Name="vikhuan">
+      <Column Name="idvikhuan" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenvk" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Association Name="vikhuan_xetnghiemv" Member="xetnghiemvs" ThisKey="idvikhuan" OtherKey="idvikhuan" Type="xetnghiemv" />
+    </Type>
+  </Table>
+  <Table Name="dbo.xetnghiem" Member="xetnghiems">
+    <Type Name="xetnghiem">
+      <Column Name="idxn" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenxn" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="thongso" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="bttren" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="btduoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="gioitinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="tuoiduoi" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="tuoitren" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="xetnghiem_kqxetnghiem" Member="kqxetnghiems" ThisKey="idxn" OtherKey="idxn" Type="kqxetnghiem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.xetnghiemvs" Member="xetnghiemvs">
+    <Type Name="xetnghiemv">
+      <Column Name="idxnvs" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idbenhpham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idvikhuan" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="tietmen" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="xetnghiemv_khangsinhdo" Member="khangsinhdos" ThisKey="idxnvs" OtherKey="idxnvs" Type="khangsinhdo" />
+      <Association Name="benhpham_xetnghiemv" Member="benhpham" ThisKey="idbenhpham" OtherKey="idbenhpham" Type="benhpham" IsForeignKey="true" />
+      <Association Name="vikhuan_xetnghiemv" Member="vikhuan" ThisKey="idvikhuan" OtherKey="idvikhuan" Type="vikhuan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ykien_bantin_duyet" Member="ykien_bantin_duyets">
+    <Type Name="ykien_bantin_duyet">
+      <Column Name="idykienbt" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idbantin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="noidung" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="bantin_ykien_bantin_duyet" Member="bantin" ThisKey="idbantin" OtherKey="idbantin" Type="bantin" IsForeignKey="true" />
+      <Association Name="nhansu_ykien_bantin_duyet" Member="nhansu" ThisKey="iduser" OtherKey="iduser" Type="nhansu" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
