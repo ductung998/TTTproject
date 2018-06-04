@@ -33,20 +33,6 @@ namespace WindowsFormsApplication1
             this.Close();
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            int idbc = 1;
-            chitietadr chitietadr = new chitietadr();
-            chitietadr.laybc(idbc);
-            chitietadr.TopLevel = false;
-            this.Controls.Add(chitietadr);
-            GDchinh.xulymenu xl = new GDchinh.xulymenu(chitietadr);
-        }
 
         
     }

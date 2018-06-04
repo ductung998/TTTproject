@@ -26,6 +26,10 @@ namespace WindowsFormsApplication1
         {
             int i = 1366 / 2 - label1.Size.Width / 2;
             label1.Location = new Point(i, 23);
+            //foreach (Control c in this.Controls)
+            //{
+            //    c.Enabled = false;
+            //} 
         }
 
         private void button3_Click(object sender, EventArgs e)

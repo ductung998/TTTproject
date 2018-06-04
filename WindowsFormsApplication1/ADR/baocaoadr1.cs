@@ -31,5 +31,15 @@ namespace WindowsFormsApplication1
         {
             this.Close();
         }
+
+        private void label57_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

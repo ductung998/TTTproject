@@ -29,12 +29,13 @@ namespace WindowsFormsApplication1
 
         private void nhansu_Load(object sender, EventArgs e)
         {
-            if (quyen == false)
-            {
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button4.Enabled = false;
-            }
+            //if (quyen == false)
+            //{
+            //    button1.Enabled = false;
+            //    button2.Enabled = false;
+            //    button4.Enabled = false;
+            //}
+            dataGridView1.Columns[0].Width = 60;
             int i = 1366 / 2 - label1.Size.Width / 2;
             label1.Location = new Point(i, 23);
         }

@@ -37,39 +37,43 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(870, 490);
+            this.button4.Location = new System.Drawing.Point(825, 669);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(128, 41);
             this.button4.TabIndex = 56;
             this.button4.Text = "Thêm";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1004, 490);
+            this.button2.Location = new System.Drawing.Point(959, 669);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(128, 41);
             this.button2.TabIndex = 55;
             this.button2.Text = "Cập nhật";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1138, 490);
+            this.button1.Location = new System.Drawing.Point(1093, 669);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 41);
             this.button1.TabIndex = 54;
             this.button1.Text = "Xóa";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1138, 666);
+            this.button3.Location = new System.Drawing.Point(1227, 669);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(128, 41);
             this.button3.TabIndex = 53;
@@ -79,11 +83,20 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 124);
+            this.dataGridView1.Location = new System.Drawing.Point(77, 152);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1202, 360);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1212, 332);
             this.dataGridView1.TabIndex = 52;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label3
             // 
@@ -96,15 +109,15 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 83);
+            this.textBox1.Location = new System.Drawing.Point(142, 98);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1146, 20);
+            this.textBox1.Size = new System.Drawing.Size(1147, 20);
             this.textBox1.TabIndex = 50;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 86);
+            this.label2.Location = new System.Drawing.Point(74, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 49;
@@ -120,11 +133,21 @@
             this.label1.TabIndex = 48;
             this.label1.Text = "DANH MỤC KHOA LÂM SÀNG";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(74, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Danh sách khoa";
+            // 
             // KhoaLS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 730);
+            this.ClientSize = new System.Drawing.Size(1367, 722);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -154,5 +177,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }
