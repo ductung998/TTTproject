@@ -53,5 +53,27 @@ namespace WindowsFormsApplication1.Properties {
                 return ((string)(this["testConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=DLS_SQLSERVER;User ID=sa;Password" +
+            "=123")]
+        public string DLS_SQLSERVERConnectionString {
+            get {
+                return ((string)(this["DLS_SQLSERVERConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=DLS_SQLSERVER;Integrated Security" +
+            "=True")]
+        public string DLS_SQLSERVERConnectionString1 {
+            get {
+                return ((string)(this["DLS_SQLSERVERConnectionString1"]));
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1
         {
             int i = 1366 / 2 - label1.Size.Width / 2;
             label1.Location = new Point(i, 23);
+            dataGridView2.Columns[0].Width = 60;
         }
 
 

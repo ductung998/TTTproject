@@ -37,5 +37,12 @@ namespace WindowsFormsApplication1
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            XemKQXN XemKQXN = new XemKQXN();
+            GDchinh gd = Application.OpenForms["GDchinh"] as GDchinh;
+            gd.xulymenu2(XemKQXN);
+        }
     }
 }
