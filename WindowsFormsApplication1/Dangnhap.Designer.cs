@@ -52,14 +52,15 @@
             this.thPass.Name = "thPass";
             this.thPass.PasswordChar = '*';
             this.thPass.Size = new System.Drawing.Size(251, 20);
-            this.thPass.TabIndex = 11;
+            this.thPass.TabIndex = 2;
+            this.thPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.thPass_KeyDown);
             // 
             // thUsername
             // 
             this.thUsername.Location = new System.Drawing.Point(112, 64);
             this.thUsername.Name = "thUsername";
             this.thUsername.Size = new System.Drawing.Size(251, 20);
-            this.thUsername.TabIndex = 10;
+            this.thUsername.TabIndex = 1;
             // 
             // label2
             // 
